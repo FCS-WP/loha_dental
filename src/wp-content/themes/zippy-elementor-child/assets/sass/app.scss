@@ -1,0 +1,36 @@
+@mixin default_font{
+    font-family: "Poppins", Sans-serif;
+}
+
+#header{
+    .right_block{
+        #elementor-menu-cart__toggle_button{
+            position: relative;
+            &:before{
+                content: "Cart";
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                font-size: 15px;
+                @include default_font;
+                color: black;
+                font-weight: normal;
+            }
+        }
+        .jkit-search-modal{
+            position: relative;
+            &:before{
+                content: "Search";
+                position: absolute;
+                top: 50%;
+                left: 0;
+                transform: translateY(-50%);
+                font-size: 15px;
+                color: black;
+                font-weight: normal;
+                @include default_font;
+            }
+        }
+    }
+}
