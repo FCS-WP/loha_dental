@@ -20,7 +20,7 @@
         }
         .jkit-search-modal{
             position: relative;
-            &:before{
+            &:after{
                 content: "Search";
                 position: absolute;
                 top: 50%;
@@ -31,6 +31,121 @@
                 font-weight: normal;
                 @include default_font;
             }
+        }
+    }
+}
+
+#main_banner{
+    .elementor-widget-heading{
+        h1{
+            span{
+                background: var( --e-global-color-primary );
+                display: inline-block;
+                padding: 5px 15px;
+                margin-bottom: 5px;
+            }
+        }
+    }
+    .elementor-widget-text-editor{
+        span{
+            display: inline-block;
+            padding: 5px 10px;
+            background: white;
+            margin-bottom: 5px;
+        }
+    }
+}
+
+#our_service{
+    .elementor-widget-image-box{
+        .elementor-image-box-img{
+            margin: 0;
+            position: relative;
+            a{
+                display: block;
+                position: relative;
+                &:before{
+                    content: "";
+                    background: rgba(0,0,0,0.2);
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    right: 0;
+                    bottom: 0;
+                    border-radius: 15px;
+                    transition: 0.3s all ease;
+                }
+            }
+            img{
+                min-height: 400px;
+                object-fit: cover;
+                object-position: center center;
+                display: block;
+            }
+        }
+        .elementor-image-box-content{
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding-bottom: 15px;
+        }
+        &:hover{
+            .elementor-image-box-img{
+                a{
+                    &:before{
+                        background: rgba(0,0,0,0.3);
+                    }
+                }
+            }
+        }
+    }
+}
+#our_reviews{
+    .left_part{
+        .elementor-widget-text-editor{
+            p{
+                margin: 0;
+            }
+        }
+    }
+    .right_part{
+        .elementor-testimonial__header{
+            .elementor-testimonial__cite{
+                .elementor-star-rating{
+                    order: 3;
+                }
+            }
+        }
+        .elementor-swiper-button-prev{
+            left: 0;
+        }
+        .elementor-swiper-button-next{
+            right: 0;
+        }
+    }
+}
+
+#our_doctors{
+    .elementor-widget-image-box{
+        .elementor-image-box-img{
+            img{
+                height: 250px;
+                object-fit: cover;
+                object-position: center center;;
+            }
+        }
+    }
+}
+
+
+.custom_sub_title{
+    &.elementor-widget-heading{
+        span{
+            background: var( --e-global-color-primary );
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 15px;
         }
     }
 }
