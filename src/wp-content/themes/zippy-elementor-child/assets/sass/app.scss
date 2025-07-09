@@ -1,7 +1,7 @@
 @mixin default_font{
     font-family: "Poppins", Sans-serif;
 }
-
+body {background: url('/wp-content/uploads/2025/07/bg-scaled.jpg') bottom center /cover no-repeat; }
 #header{
     .right_block{
         #elementor-menu-cart__toggle_button{
