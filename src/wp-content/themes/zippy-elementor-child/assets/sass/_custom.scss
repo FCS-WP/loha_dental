@@ -279,6 +279,7 @@ body {background: url('/wp-content/uploads/2025/07/bg-1-scaled.jpg') bottom cent
   padding: 0 10px;
   margin-right: 5px;
   border-radius: 5px;
+  display: inline-block;
 }
 
 .banner_hightlights {
@@ -368,17 +369,3 @@ body {background: url('/wp-content/uploads/2025/07/bg-1-scaled.jpg') bottom cent
     top: 3px;
   }
 }
-
-// Responsive
-@media screen and (min-width: 768px) {
-  .sp {
-    display: none !important;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .pc {
-    display: none !important;
-  }
-}
-
