@@ -18,8 +18,8 @@ jQuery(document).ready(function ($) {
 });
 
 function updateTimeOptions() {
-  const $selectValue = $("#form-field-home_booking_time_select");
-  $selectValue.empty();
+  const selectValue = $("#form-field-home_booking_time_select");
+  selectValue.empty();
   const bookingDate = $("#form-field-home_booking_day").val();
   const date = new Date(bookingDate || Date.now());
   const day = date.getDay();
@@ -45,10 +45,9 @@ function updateTimeOptions() {
     return hoursStr + ":" + minsStr;
   }
 
-  const step = 30;
-
+  const step = 15;
   for (var i = minTime; i <= maxTime; i += step) {
     const timeStr = convertToTime(i);
-    $selectValue.append(`<option value="${timeStr}">${timeStr}</option>`);
+    selectValue.append(`<option value="${timeStr}">${timeStr}</option>`);
   }
 }
