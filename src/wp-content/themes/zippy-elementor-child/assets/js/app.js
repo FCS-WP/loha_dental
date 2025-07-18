@@ -1,5 +1,4 @@
 // import { DisplayLabel } from './components/DisplayLabel';
-import "../lib/flatpickr/flatpickr.min.js";
 
 let Main = {
   init: async function () {
@@ -12,47 +11,44 @@ let Main = {
 
 // Main.init();
 jQuery(document).ready(function ($) {
-  function initFlatpickr() {
-    const $pickUp = $("#form-field-home_booking_time");
-    if (typeof flatpickr !== "undefined") {
-      if ($pickUp.length) {
-        $pickUp.flatpickr({
-          enableTime: true,
-          noCalendar: true,
-          time_24hr: true,
-          minuteIncrement: 15,
-          onChange: function (selectedDates, dateStr, instance) {
-            updateTimeRange(instance);
-          },
-          onOpen: function (selectedDates, dateStr, instance) {
-            updateTimeRange(instance);
-          },
-          onReady: function (selectedDates, dateStr, instance) {
-            updateTimeRange(instance);
-          },
-        });
+  updateTimeOptions();
+  $('#form-field-home_booking_day').on('change', function () {
+    updateTimeOptions();
+  });
+});
 
-        function updateTimeRange(instance) {
-          const bookingDate = $("#form-field-home_booking_day").val();
-          const date = new Date(bookingDate || Date.now());
-          const day = date.getDay();
+function updateTimeOptions() {
+  const $selectValue = $("#form-field-home_booking_time_select");
+  $selectValue.empty();
+  const bookingDate = $("#form-field-home_booking_day").val();
+  const date = new Date(bookingDate || Date.now());
+  const day = date.getDay();
 
-          if (day === 2) {
-            instance.set("minTime", "14:00");
-            instance.set("maxTime", "20:00");
-          } else if (day === 6) {
-            instance.set("minTime", "09:00");
-            instance.set("maxTime", "13:00");
-          } else {
-            instance.set("minTime", "09:00");
-            instance.set("maxTime", "18:00");
-          }
-        }
-      }
-    } else {
-      setTimeout(initFlatpickr, 300);
-    }
+  var minTime, maxTime;
+  if (day === 2) {
+    minTime = 840; // 14:00
+    maxTime = 1200; // 20:00
+  } else if (day === 6) {
+    minTime = 540; // 09:00
+    maxTime = 780; // 13:00
+  } else {
+    minTime = 540; // 09:00
+    maxTime = 1080; // 18:00
+  }
+  
+  function convertToTime(time) {
+    const hours = Math.floor(time / 60);
+    const mins = time % 60;
+    const hoursStr = hours < 10 ? "0" + hours : hours;
+    const minsStr = mins < 10 ? "0" + mins : mins;
+
+    return hoursStr + ":" + minsStr;
   }
 
-  initFlatpickr();
-});
+  const step = 30;
+
+  for (var i = minTime; i <= maxTime; i += step) {
+    const timeStr = convertToTime(i);
+    $selectValue.append(`<option value="${timeStr}">${timeStr}</option>`);
+  }
+}
